@@ -1,0 +1,70 @@
+extends layout
+
+block welcome
+    include welcome
+
+block content
+    .container.padded
+          .row
+            .col-lg-12
+              h2 Insects
+              hr
+              p Some insect pictures
+          .row.tpad.myTooltip
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect One')
+                img(src='images/insect1.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Two')
+                img(src='images/insect2.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Three')
+                img(src='images/insect3.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Four')
+                img(src='images/insect4.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Five')
+                img(src='images/insect5.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Six')
+                img(src='images/insect6.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Seven')
+                img(src='images/insect7.jpg', alt='logo')
+            .col-sm-6.col-md-3.tpad
+              a.thumbnail(href='#', data-toggle='tooltip', title='', data-original-title='Insect Eight')
+                img(src='images/insect8.jpg', alt='logo')
+          .row
+            .col-lg-12
+              #accordion.panel-group
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.accordian-toggle(data-toggle='collapse', data-parent='accordion', href='#collapseOne')
+                        span.glyphicon.glyphicon-briefcase
+                        |                                     Dragonfly
+                  #collapseOne.panel-collapse.collapse
+                    .panel-body
+                      | A dragonfly is an insect belonging to the order Odonata, the suborder Epiprocta or, in the strict sense, the infraorder Anisoptera. It is characterized by large multifaceted eyes, two pairs of strong transparent wings, and an elongated body.
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.accordian-toggle(data-toggle='collapse', data-parent='accordion', href='#collapseTwo')
+                        span.glyphicon.glyphicon-barcode
+                        |                                     Dragonfly
+                  #collapseTwo.panel-collapse.collapse
+                    .panel-body
+                      | A dragonfly is an insect belonging to the order Odonata, the suborder Epiprocta or, in the strict sense, the infraorder Anisoptera. It is characterized by large multifaceted eyes, two pairs of strong transparent wings, and an elongated body.
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.accordian-toggle(data-toggle='collapse', data-parent='accordion', href='#collapseThree')
+                        span.glyphicon.glyphicon-phone
+                        |                                     Dragonfly
+                  #collapseThree.panel-collapse.collapse
+                    .panel-body
+                      | A dragonfly is an insect belonging to the order Odonata, the suborder Epiprocta or, in the strict sense, the infraorder Anisoptera. It is characterized by large multifaceted eyes, two pairs of strong transparent wings, and an elongated body.
+              p Som my projectss
+        // End Page Content
+    

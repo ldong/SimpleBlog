@@ -1,0 +1,43 @@
+extends layout
+
+block welcome
+    include welcome
+
+block content
+    .container.padded
+        .map
+              iframe(src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3168.9627007384333!2d-122.0251292!3d37.41435649999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb797d65c90b7%3A0xfda5e85aefbed497!2s779+W+Java+Dr%2C+Sunnyvale%2C+CA+94089!5e0!3m2!1sen!2sus!4v1421740706037" width='100%' height='100%' frameborder='0' style='border:0')
+            .container.padded
+              .row
+                .col-lg-12
+                  small
+                    a(href='https://www.google.com/maps/place/779+W+Java+Dr,+Sunnyvale,+CA+94089/@37.4143565,-122.0251292,17z/data=!3m1!4b1!4m2!3m1!1s0x808fb797d65c90b7:0xfda5e85aefbed497') View large map
+            .container.padded
+              .row
+                .col-lg-12
+                  h2 Get in touch
+                  hr
+                  p Please leave your contact information:
+                  form.form-horizontal.tpad(role='form')
+                    .form-group
+                      label.col-lg-2.control-label(for='email') Email
+                      .col-lg-8
+                        input#email.form-control(type='email', placeholder='Email')
+                    .form-group.tpad
+                      label.col-lg-2.control-label(for='message') Message
+                      .col-lg-8
+                        textarea#message.form-control(type='email', rows='6', placeholder='message...')
+                    .form-group.tpad
+                      .col-lg-offset-2.col-lg-8
+                        a.btn.btn-default.btn-lg(data-toggle='modal', href='#myModal') Send
+                #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                        h3.modal-title Thank you for submitting.
+                      .modal-body
+                        p
+                          | We appreciate you getting in touch. Please be patient, we will contact you shortly.
+                      .modal-footer
+                        a.btn.btn-default.btn-lg(href='index') Ok

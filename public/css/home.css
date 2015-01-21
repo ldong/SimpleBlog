@@ -1,0 +1,85 @@
+body{
+    background: #e9e6df;
+}
+
+.welcome-title {
+    overflow:hidden;
+}
+
+.intro-block{
+    background: url(../images/flower4.jpg)repeat;
+    padding: 200px 50px 80px;
+    color: #fff;
+}
+
+.text-muted{
+    color: #e9e6df;
+    font-weight:100;
+}
+
+.tpad{
+    padding-top: 20px;
+}
+
+.padded{
+    padding-top:20px;
+}
+.marketing{
+    background-color: #e9e6df;
+}
+
+hr{
+    border-top: 1px solid #c9c9c9;
+}
+
+.info{
+    background: #6495ed url(../images/skylines1.jpeg) repeat-x bottom;
+    padding: 120px 0;
+}
+
+.info p, .info small{
+    color: #eeeef9;
+}
+.info a{
+    color: #fff;
+}
+.info a:hover{
+    color: #333;
+}
+.tab-pane{
+    padding: 40px 10px 0 10px
+}
+.ftr{
+    padding: 80px 0 60px 0;
+    background: #e9e6df;
+}
+.ftr_space{
+    padding: 0 10px;
+}
+
+.carusel-inner > .item >img{
+    position: absolute;
+    top:50px;
+    left:0;
+    min-width:100%;
+    height:auto;
+}
+
+@media(min-width 768px){
+    .carousel-inner > .item{
+    height: 300px;
+    }
+    .map{
+    height:500px;
+    }
+}
+.sidebar{
+    background-color: #e9e6df;
+}
+.bpad{
+    margin-bottom:30px;
+}
+.map{
+    height:350px;
+    width:100%;
+}
