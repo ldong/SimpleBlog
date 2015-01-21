@@ -1,43 +1,44 @@
-#myCarousel.carousel.slide
-  ol.carousel-indicators
-    li.active(data-target='#myCarousel', data-slide-to='0')
-    li(data-target='#myCarousel', data-slide-to='1')
-    li(data-target='#myCarousel', data-slide-to='2')
-    li(data-target='#myCarousel', data-slide-to='3')
-  .carousel-inner
-    .item.active
-      img(src='images/flower1.jpg')
-      .container.active
-        .carousel-caption
-          h1 Flower 1
-          p This is flower 1
-          p
-            a.btn.btn-primary.btn-large(href='#') Sign up today
-    .item
-      img(src='images/flower2.jpg')
-      .container.active
-        .carousel-caption
-          h1 Flower 2
-          p This is flower 1
-          p
-            a.btn.btn-primary.btn-large(href='#') Sign up today
-    .item
-      img(src='images/flower3.jpg')
-      .container.active
-        .carousel-caption
-          h1 Flower 3
-          p This is flower 1
-          p
-            a.btn.btn-primary.btn-large(href='#') Sign up today
-    .item
-      img(src='images/flower4.jpg')
-      .container.active
-        .carousel-caption
-          h1 Flower 4
-          p This is flower 1
-          p
-            a.btn.btn-primary.btn-large(href='#') Sign up today
-  a.left.carousel-control(href='#myCarousel', data-slide='prev')
-    span.glyphicon.glyphicon-chevron-left
-  a.right.carousel-control(href='#myCarousel', data-slide='next')
-    span.glyphicon.glyphicon-chevron-right
+block carousel
+  #myCarousel.carousel.slide
+      ol.carousel-indicators
+        li.active(data-target='#myCarousel', data-slide-to='0')
+        li(data-target='#myCarousel', data-slide-to='1')
+        li(data-target='#myCarousel', data-slide-to='2')
+        li(data-target='#myCarousel', data-slide-to='3')
+      .carousel-inner
+        .item.active
+          img(src='images/flower1.jpg')
+          .container.active
+            .carousel-caption
+              h1 Flower 1
+              p This is flower 1
+              p
+                a.btn.btn-primary.btn-large(href='#') Sign up today
+        .item
+          img(src='images/flower2.jpg')
+          .container.active
+            .carousel-caption
+              h1 Flower 2
+              p This is flower 1
+              p
+                a.btn.btn-primary.btn-large(href='#') Sign up today
+        .item
+          img(src='images/flower3.jpg')
+          .container.active
+            .carousel-caption
+              h1 Flower 3
+              p This is flower 1
+              p
+                a.btn.btn-primary.btn-large(href='#') Sign up today
+        .item
+          img(src='images/flower4.jpg')
+          .container.active
+            .carousel-caption
+              h1 Flower 4
+              p This is flower 1
+              p
+                a.btn.btn-primary.btn-large(href='#') Sign up today
+      a.left.carousel-control(href='#myCarousel', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left
+      a.right.carousel-control(href='#myCarousel', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right

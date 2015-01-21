@@ -11,6 +11,11 @@ module.exports = function(app) {
             page_title: "Home",
         });
     });
+    app.get("/home", function(req, res) {
+        res.render("carousel",{
+            page_title: "Home",
+        });
+    });
 
     // app.post("/signin", function(req, res) {
     //    res.json({message: "Sigin post request"});

@@ -6,7 +6,7 @@ module.exports = function(app, mongoose) {
     //app.get("/blog", ensureAuthenticated, function(req, res, next) {
     app.get("/blog", function(req, res) {
         res.render("blog", {
-            page_title: "Blog"
+            page_title: "Blog",
         });
         // if (err) {
         //     res.render("error", {err: err});

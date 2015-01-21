@@ -2,10 +2,6 @@ body{
     background: #e9e6df;
 }
 
-.welcome-title {
-    overflow:hidden;
-}
-
 .intro-block{
     background: url(../images/flower4.jpg)repeat;
     padding: 200px 50px 80px;
@@ -83,3 +79,8 @@ hr{
     height:350px;
     width:100%;
 }
+
+.welcome-name{
+    display:inline;
+}
+
