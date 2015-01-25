@@ -1,18 +1,21 @@
-extends layout
-
-block content
-    .container
-        h1 Signin
-        .contact-form
-            form.form-horizontal.col-md-8(role='form', method='POST', action='/signin')
-                .form-group
-                    label.col-md-2(for='title') Email
-                    .col-md-10
-                        input#email.form-control(type='text', placeholder='Email', name='email')
-                .form-group
-                    label.col-md-2(for='content') Password
-                    .col-md-10
-                        input#password.form-control(type='password', placeholder='Password', name='password')
-                .form-group
-                    .col-md-12.text-right
-                        button.btn.btn-lg.btn-primary(type='submit') Signin
+.container.tpad
+  h2 Signin
+  .contact-form.form-horizontal.tpad
+    form.col-md-8(role='form')
+      .form-group
+        label(for='email') Email:
+        input#email.form-control(type='email', placeholder='Enter email')
+      .form-group
+        label(for='pwd') Password:
+        input#pwd.form-control(type='password', placeholder='Enter password')
+      .checkbox
+        label
+          input(type='checkbox')
+          |  Remember me
+      .form-group
+        .col-md-8.text-left.tpad
+          button.btn.btn-lg.btn-primary#signInCreate(type='submit') Create Account
+        .col-md-4.text-right.tpad
+          button.btn.btn-lg.btn-primary(type='submit') Submit
+  script(src="/javascripts/signup.js")
+  script(src="/javascripts/signin.js")

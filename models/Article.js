@@ -8,6 +8,7 @@ module.exports = function( mongoose ) {
         content: String,
         author: String,
         comments: [Comment.schema],
+        tags: [String],
         createDate: {
             type: Date,
             default: Date.now

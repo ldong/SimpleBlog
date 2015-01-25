@@ -1,26 +1,23 @@
-extends layout
-
 block content
     .container
         h1 Signup
         .contact-form
-            form.form-horizontal.col-md-8(role='form', method='POST', action='/signup')
+            form.form-horizontal.col-md-8(role='form', method='POST' id='signupform')
                 .form-group
-                    label.col-md-2(for='title') Name
+                    label.col-md-3(for='title') Name
                     .col-md-10
                         input#email.form-control(type='text', placeholder='Name', name='name')
                 .form-group
-                    label.col-md-2(for='title') Email
+                    label.col-md-3(for='title') Email
                     .col-md-10
                         input#email.form-control(type='text', placeholder='Email', name='email')
                 .form-group
-                    label.col-md-2(for='content') Password
+                    label.col-md-3(for='content') Password
                     .col-md-10
                         input#password.form-control(type='password', placeholder='Password', name='password')
                 .form-group
-                    label.col-md-2(for='content') Password Again
-                    .col-md-10
-                        input#password2.form-control(type='password', placeholder='Password Again', name='passwordAgain')
-                .form-group
-                    .col-md-12.text-right
-                        button.btn.btn-lg.btn-primary(type='submit') Signup
+                    .col-md-10.text-right
+                        button.btn.btn-lg.btn-primary(id='signup', type='submit') Signup
+    // End Navigation
+    script(src="/javascripts/signup.js")
+    script(src="/javascripts/signin.js")

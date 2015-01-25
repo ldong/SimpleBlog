@@ -104,6 +104,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 require("./models/Article")(mongooseConnection);
+require("./models/Tag")(mongooseConnection);
 require("./models/User")(mongooseConnection);
 require("./models/Comment")(mongooseConnection);
 

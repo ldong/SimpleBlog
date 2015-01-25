@@ -12,9 +12,13 @@ module.exports = function(app, mongoose) {
             passport.authenticate('local-signup', function(err, user, info) {
                 if (err) { return next(err) }
                 if (!user) {
-                    return res.redirect('/signup')
+                    //return "not user"
+                    //return res.redirect('/signup')
+                    res.json({"foo": "bar"});
                 } else {
-                    res.redirect("/signin");
+                    //return "user"
+                    //res.redirect("/signin");
+                    res.json({"foo1": "bar1"});
                 }
             })(req, res, next);
         });
