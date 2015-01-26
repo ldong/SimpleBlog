@@ -1,66 +1,23 @@
 .container
    .row
      .col-sm-8.blog
-       section
-         h1
-           a(href='#') Isralel holy land view
-         p.lead
-           a(href='index') SD LLC
-         hr
-         p
-           span.glyphicon.glyphicon-time
-           | Wed Dec 31 19:03:12 EST 2014
-         hr
-         img.img-responsive(src='images/landview1.jpg')
-         hr
-         p Beautiful land.
-         a.btn.btn-primary(href='#') Read More »
-         hr
-       section
-         h1
-           a(href='#') Tree in field
-         p.lead
-           a(href='index') SD LLC
-         hr
-         p
-           span.glyphicon.glyphicon-time
-           | Wed Dec 23 19:03:12 EST 2014
-         hr
-         img.img-responsive(src='images/landview2.jpg')
-         hr
-         p What a tree.
-         a.btn.btn-primary(href='#') Read More »
-         hr
-       section
-         h1
-           a(href='#') Aerial view of a town
-         p.lead
-           a(href='index') SD LLC
-         hr
-         p
-           span.glyphicon.glyphicon-time
-           | Wed Dec 31 19:03:12 EST 2014
-         hr
-         img.img-responsive(src='images/landview3.jpg')
-         hr
-         p Aerial view.
-         a.btn.btn-primary(href='#') Read More »
-         hr
-       section
-         h1
-           a(href='#') Virginia beach.
-         p.lead
-           a(href='index') SD LLC
-         hr
-         p
-           span.glyphicon.glyphicon-time
-           | Wed Dec 31 19:03:12 EST 2014
-         hr
-         img.img-responsive(src='images/landview4.jpg')
-         hr
-         p Virginia beach.
-         a.btn.btn-primary(href='#') Read More »
-         hr
+       - each articleInfo in data.paginatedResults
+         section
+             article
+               h1
+                 a(href='#') #{articleInfo.title}
+               .row
+                 .col-sm-12.col-md-12
+                   span.glyphicon.glyphicon-pencil
+                   a(href='#') 
+                   | #{articleInfo.comments.length}  Comments
+                   span.glyphicon.glyphicon-time
+                   | #{articleInfo.createDate}
+               hr
+               br
+               p.lead
+                   #{articleInfo.content}
+               hr
        ul.pagination
          li
            a(href='#') «

@@ -3,6 +3,9 @@ module.exports = function( mongoose ) {
 
     var Comment = require("./Comment");
 
+    var mongoosePaginate = require('mongoose-paginate');
+    
+
     var ArticleSchema = new Schema({
         title: String,
         content: String,
@@ -14,5 +17,8 @@ module.exports = function( mongoose ) {
             default: Date.now
         }
     });
+
+    ArticleSchema.plugin(mongoosePaginate)
+
     mongoose.model( 'Article', ArticleSchema );
 }

@@ -4,7 +4,7 @@ block content
     .col-sm-8.blog
       h2 New Article
       .contact-form.form-horizontal
-        form.form-horizontal.col-md-11(role='form', method='POST', action='/article/create')
+        form.form-horizontal.col-md-11(role='form', method='POST', action='/article/create', id='createArticleForm')
           .form-group
             label(for='title') Title:
             input#email.form-control(type='text', placeholder='Enter Title', name='title')
@@ -53,3 +53,5 @@ block content
             h4.media-heading @sdong
             p.bpad Titanic is a good movie
         hr
+  
+  script(src="/javascripts/article-new.js")

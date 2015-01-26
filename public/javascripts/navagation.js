@@ -3,6 +3,7 @@ $('.nav.navbar-nav > li').on("click", function(event){
     $(this).addClass('active');
     var text = $(this).text();
     $('span.text-muted.tpad.welcome-title').html('» My ' +text);
+    debugger;
     $.get("/"+text.toLowerCase().match(/\S+/g).join('_'), function(data,status){
         //alert("Data: " + data + "\nStatus: " + status);
         $(".page_content").html(data);
