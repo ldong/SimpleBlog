@@ -6,6 +6,7 @@ module.exports = function(app, mongoose) {
 
     app.route("/signup")
         .get(function(req, res) {
+            debugger;
             res.render("signup");
         })
         .post(function(req, res, next) {
@@ -14,7 +15,7 @@ module.exports = function(app, mongoose) {
                 if (!user) {
                     //return "not user"
                     //return res.redirect('/signup')
-                    res.json({"foo": "bar"});
+                    res.json({user: user.name});
                 } else {
                     //return "user"
                     //res.redirect("/signin");
@@ -29,25 +30,42 @@ module.exports = function(app, mongoose) {
         })
         .post(function(req, res, next) {
             passport.authenticate('local', function(err, user, info) {
-                if (err) { return next(err) }
-                if (!user) {
-                    return res.redirect('/signin')
+                if (err) { 
+                    return next(err); 
                 }
-                req.logIn(user, function(err) {
-                    if (err) { return next(err); }
-                    return res.redirect('/');
-                });
+                if (!user) {
+                    //return res.redirect('/signin')
+                    var tmp = {};
+                    tmp["error_code"] = "1";
+                    tmp["error_info"] = "Authentication failed";
+                    console.log("Authentication failed");
+                    res.json(tmp);
+                }else{
+                    req.logIn(user, function(err) {
+                        if (err) { 
+                            return next(err); 
+                        }
+                        var tmp = {};
+                        tmp["error_code"] = "0";
+                        tmp["error_info"] = "Authentication succeeded";
+                        console.log("Authentication succeeded");
+                        res.json(tmp);
+//                        res.redirect('/blog');
+                    });
+                }
             })(req, res, next);
         });
 
     app.get('/logout', function(req, res){
         req.logout();
-        res.redirect('/');
+        res.redirect('/signin');
     });
 
 }
 
 function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) { return next(); }
+    if (req.isAuthenticated()) { 
+        return next(); 
+    }
     res.redirect('/signin')
 }

@@ -1,13 +1,13 @@
 .container.tpad
   h2 Signin
   .contact-form.form-horizontal.tpad
-    form.col-md-8(role='form')
+    form.col-md-8(role='form' id='signInForm')
       .form-group
         label(for='email') Email:
-        input#email.form-control(type='email', placeholder='Enter email')
+        input#email.form-control(type='email', placeholder='Enter email', name='email')
       .form-group
         label(for='pwd') Password:
-        input#pwd.form-control(type='password', placeholder='Enter password')
+        input#pwd.form-control(type='password', placeholder='Enter password', name='password')
       .checkbox
         label
           input(type='checkbox')
@@ -16,6 +16,6 @@
         .col-md-8.text-left.tpad
           button.btn.btn-lg.btn-primary#signInCreate(type='submit') Create Account
         .col-md-4.text-right.tpad
-          button.btn.btn-lg.btn-primary(type='submit') Submit
+          button.btn.btn-lg.btn-primary#signInSubmit(type='submit') Submit
   script(src="/javascripts/signup.js")
   script(src="/javascripts/signin.js")

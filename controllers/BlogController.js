@@ -58,7 +58,6 @@ module.exports = function(app, mongoose) {
         // var query = Article.find().sort({'createDate':1});
         // console.log(query);
         Article.paginate({}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
-          debugger;
           if (error) {
             console.error(error);
           } else {

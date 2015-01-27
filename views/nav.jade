@@ -31,13 +31,20 @@ block nav_content
                 a(href='https://plus.google.com') Google+
               li
                 a(href='http://www.linkedin.com') Linkedin
-        ul.nav.navbar-nav.navbar-right.col-sm-2
-          li.pull-right
-            a#newBlog(href='#')
-              | New blog
-          li.pull-right
-            a#signIn(href='#')
-              | Signin
+        ul.nav.navbar-nav.navbar-right.col-sm-3
+          if (req.isAuthenticated())
+            li
+              a#welcome(href='#') Welcome #{req.user.name}
+            li.pull-right
+              a#signIn(href='#')
+                | Logout
+            li.pull-right
+              a#newBlog(href='#')
+                | New blog
+          else
+            li.pull-right
+              a#signIn(href='#')
+                | Signin
     // End Navigation
     script(src="/javascripts/navagation.js")
 
