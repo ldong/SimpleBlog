@@ -9,7 +9,7 @@
                .row
                  .col-sm-12.col-md-12
                    span.glyphicon.glyphicon-pencil
-                   a(href='#') 
+                   a(href='#')
                    | #{articleInfo.comments.length}  Comments
                    span.glyphicon.glyphicon-time
                    | #{articleInfo.createDate}
@@ -19,6 +19,32 @@
                    #{articleInfo.content}
                hr
        ul.pagination
+         if  req.data.current_minus_3 != '-1'
+           li
+             a(href='/blog/page/#{req.data.current_minus_3}') «
+         if  req.data.current_minus_2 != '-1'
+           li
+             a(href='/blog/page/#{req.data.current_minus_2}') #{req.data.current_minus_2}
+         if  req.data.current_minus_1 != '-1'
+           li
+             a(href='/blog/page/#{req.data.current_minus_1}') #{req.data.current_minus_1}
+         li.active
+           a(href='/blog/page/#{req.data.pageCount}') #{req.data.pageCount}
+         if  req.data.current_plus_1 != '-1'
+           li
+             a(href='/blog/page/#{req.data.current_plus_1}') #{req.data.current_plus_1}
+         if  req.data.current_plus_2 != '-1'
+           li
+             a(href='/blog/page/#{req.data.current_plus_2}') #{req.data.current_plus_2}
+         if  req.data.current_plus_3 != '-1'
+           li
+             a(href='/blog/page/#{req.data.current_plus_3}') »
+         if  req.data.pageCount == '1'
+           li.active
+             a(href='#') «
+
+         li
+           a(href='#') Welcome #{req.data.pageCount}
          li
            a(href='#') «
          li.active

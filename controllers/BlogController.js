@@ -61,21 +61,49 @@ module.exports = function(app, mongoose) {
           if (error) {
             console.error(error);
           } else {
+            debugger;
             console.log('Pages:', pageCount);
             console.log(paginatedResults);
             var data = {};
             data['pageCount'] = pageCount;
             data['paginatedResults']= paginatedResults;
             data['itemCount'] = itemCount;
-//res.json(tmp);
-//res.render("applications", { applications : applications });
+
+            var totalPages = itemCount/10;
+            if(itemCount%10 > 0)
+                totalPages += 1;
+            data['itemCount'] = itemCount;
+            if(pageCount-3 > 0)
+                data['current_minus_3'] = pageCount - 3;
+            else
+                data['current_minus_3'] = -1;
+            if(pageCount-2 > 0)
+                data['current_minus_2'] = pageCount - 2;
+            else
+                data['current_minus_2'] = -1;
+            if(pageCount-1 > 0)
+                data['current_minus_1'] = pageCount - 1;
+            else
+                data['current_minus_1'] = -1;
+            
+            if(pageCount+1 <= totalPages)
+                data['current_plus_1'] = pageCount + 1;
+            else
+                data['current_plus_1'] = -1;
+            if(pageCount+2 <= totalPages)
+                data['current_plus_2'] = pageCount + 2;
+            else 
+                data['current_plus_2'] = -1;
+            if(pageCount+3 <= totalPages)
+                data['current_plus_3'] = pageCount + 3;
+            else
+                data['current_plus_3'] = -1;
+
+            req.data = data;
             res.render('blog', {data: data});
           }
         },{ sortBy:{ createDate: -1 }});
 
-        // res.render("blog", {
-        //     page_title: "Blog",
-        // });
     });
 
     // app.get("/blog/new", ensureAuthenticated, function(req, res, next) {

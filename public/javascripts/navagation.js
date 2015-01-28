@@ -12,7 +12,6 @@ $('.nav.navbar-nav > li').on("click", function(event){
         $('.nav.navbar-nav > li').removeClass('active');
         console.log($('.nav.navbar-nav > li'));
         $(this).addClass('active');
-        debugger;
         $('span.text-muted.tpad.welcome-title').html('» My ' +text);
         $.get("/"+text.toLowerCase().match(/\S+/g).join('_'), function(data,status){
             //alert("Data: " + data + "\nStatus: " + status);
