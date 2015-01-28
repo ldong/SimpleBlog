@@ -20,47 +20,27 @@
                hr
        ul.pagination
          if  req.data.current_minus_3 != '-1'
-           li
+           li.page-num
              a(href='/blog/page/#{req.data.current_minus_3}') «
          if  req.data.current_minus_2 != '-1'
-           li
+           li.page-num
              a(href='/blog/page/#{req.data.current_minus_2}') #{req.data.current_minus_2}
          if  req.data.current_minus_1 != '-1'
-           li
+           li.page-num
              a(href='/blog/page/#{req.data.current_minus_1}') #{req.data.current_minus_1}
-         li.active
-           a(href='/blog/page/#{req.data.pageCount}') #{req.data.pageCount}
+         if  req.data.current_page != '-1'
+           li.active.page-num
+             a(href='/blog/page/#{req.data.current_page}') #{req.data.current_page}
          if  req.data.current_plus_1 != '-1'
-           li
+           li.page-num
              a(href='/blog/page/#{req.data.current_plus_1}') #{req.data.current_plus_1}
          if  req.data.current_plus_2 != '-1'
-           li
+           li.page-num
              a(href='/blog/page/#{req.data.current_plus_2}') #{req.data.current_plus_2}
          if  req.data.current_plus_3 != '-1'
-           li
+           li.page-num
              a(href='/blog/page/#{req.data.current_plus_3}') »
-         if  req.data.pageCount == '1'
-           li.active
-             a(href='#') «
 
-         li
-           a(href='#') Welcome #{req.data.pageCount}
-         li
-           a(href='#') «
-         li.active
-           a(href='#') 1
-         li
-           a(href='#') 2
-         li
-           a(href='#') 3
-         li
-           a(href='#') 4
-         li
-           a(href='#') 5
-         li
-           a(href='#') 6
-         li
-           a(href='#') »
      .col-sm-4.sidebar
        h3.tpad Search
        section
@@ -97,3 +77,4 @@
              h4.media-heading @sdong
              p.bpad Titanic is a good movie
          hr
+  script(src="/javascripts/blog.js")

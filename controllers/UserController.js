@@ -6,7 +6,6 @@ module.exports = function(app, mongoose) {
 
     app.route("/signup")
         .get(function(req, res) {
-            debugger;
             res.render("signup");
         })
         .post(function(req, res, next) {

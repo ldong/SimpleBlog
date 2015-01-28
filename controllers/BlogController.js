@@ -39,29 +39,60 @@ module.exports = function(app, mongoose) {
 
     //app.get("/blog", ensureAuthenticated, function(req, res, next) {
     app.get("/blog", function(req, res) {
-       // section
-       //   article
-       //     h1
-       //       a(href='#') #{articleInfo.title}
-       //     .row
-       //       .col-sm-12.col-md-12
-       //         span.glyphicon.glyphicon-pencil
-       //         a(href='#') 
-       //         | #{articleInfo.comments.length}  Comments
-       //         span.glyphicon.glyphicon-time
-       //         | #{articleInfo.createDate}
-       //     hr
-       //     br
-       //     p.lead
-       //         #{articleInfo.content}
-       //     hr
-        // var query = Article.find().sort({'createDate':1});
-        // console.log(query);
-        Article.paginate({}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+            res.redirect('/blog/page/1');
+        // Article.paginate({}, 1, 10, function(error, pageCount, paginatedResults, itemCount) {
+        //   if (error) {
+        //     console.error(error);
+        //   } else {
+        //     console.log('Pages:', pageCount);
+        //     console.log(paginatedResults);
+        //     var data = {};
+        //     data['pageCount'] = pageCount;
+        //     data['paginatedResults']= paginatedResults;
+        //     data['itemCount'] = itemCount;
+
+        //     var totalPages = itemCount/10;
+        //     if(itemCount%10 > 0)
+        //         totalPages += 1;
+        //     data['itemCount'] = itemCount;
+        //     if(pageCount-3 > 0)
+        //         data['current_minus_3'] = pageCount - 3;
+        //     else
+        //         data['current_minus_3'] = -1;
+        //     if(pageCount-2 > 0)
+        //         data['current_minus_2'] = pageCount - 2;
+        //     else
+        //         data['current_minus_2'] = -1;
+        //     if(pageCount-1 > 0)
+        //         data['current_minus_1'] = pageCount - 1;
+        //     else
+        //         data['current_minus_1'] = -1;
+        //     
+        //     if(pageCount+1 <= totalPages)
+        //         data['current_plus_1'] = pageCount + 1;
+        //     else
+        //         data['current_plus_1'] = -1;
+        //     if(pageCount+2 <= totalPages)
+        //         data['current_plus_2'] = pageCount + 2;
+        //     else 
+        //         data['current_plus_2'] = -1;
+        //     if(pageCount+3 <= totalPages)
+        //         data['current_plus_3'] = pageCount + 3;
+        //     else
+        //         data['current_plus_3'] = -1;
+
+        //     req.data = data;
+        //     res.render('blog', {data: data});
+        //   }
+        // },{ sortBy:{ createDate: -1 }});
+
+    });
+    app.get("/blog/page/:id", function(req, res) {
+        var id = req.params.id;  
+        Article.paginate({}, id, 10, function(error, pageCount, paginatedResults, itemCount) {
           if (error) {
             console.error(error);
           } else {
-            debugger;
             console.log('Pages:', pageCount);
             console.log(paginatedResults);
             var data = {};
@@ -69,36 +100,45 @@ module.exports = function(app, mongoose) {
             data['paginatedResults']= paginatedResults;
             data['itemCount'] = itemCount;
 
-            var totalPages = itemCount/10;
-            if(itemCount%10 > 0)
-                totalPages += 1;
+            var totalPages = Math.ceil(itemCount/10)
+
             data['itemCount'] = itemCount;
-            if(pageCount-3 > 0)
-                data['current_minus_3'] = pageCount - 3;
+
+            var currentPage = -1;
+            if(id >0 && id<=totalPages && itemCount>0)
+                currentPage = parseInt(id);
+
+            if(currentPage-3 > 0)
+                data['current_minus_3'] = currentPage - 3;
             else
                 data['current_minus_3'] = -1;
-            if(pageCount-2 > 0)
-                data['current_minus_2'] = pageCount - 2;
+            if(currentPage-2 > 0)
+                data['current_minus_2'] = currentPage - 2;
             else
                 data['current_minus_2'] = -1;
-            if(pageCount-1 > 0)
-                data['current_minus_1'] = pageCount - 1;
+            if(currentPage-1 > 0)
+                data['current_minus_1'] = currentPage - 1;
             else
                 data['current_minus_1'] = -1;
+
+            data['current_page'] = currentPage;
             
-            if(pageCount+1 <= totalPages)
-                data['current_plus_1'] = pageCount + 1;
+            
+            if(currentPage+1 <= totalPages && currentPage>0)
+                data['current_plus_1'] = currentPage + 1;
             else
                 data['current_plus_1'] = -1;
-            if(pageCount+2 <= totalPages)
-                data['current_plus_2'] = pageCount + 2;
+            if(currentPage+2 <= totalPages)
+                data['current_plus_2'] = currentPage + 2;
             else 
                 data['current_plus_2'] = -1;
-            if(pageCount+3 <= totalPages)
-                data['current_plus_3'] = pageCount + 3;
+            if(currentPage+3 <= totalPages)
+                data['current_plus_3'] = currentPage + 3;
             else
                 data['current_plus_3'] = -1;
 
+            data['totalPages'] = totalPages;
+            console.log(data);
             req.data = data;
             res.render('blog', {data: data});
           }
