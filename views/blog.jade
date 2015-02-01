@@ -16,30 +16,53 @@
                hr
                br
                p.lead
-                   #{articleInfo.content}
+                  #{articleInfo.content}
                hr
        ul.pagination
-         if  req.data.current_minus_3 != '-1'
-           li.page-num
-             a(href='/blog/page/#{req.data.current_minus_3}') «
-         if  req.data.current_minus_2 != '-1'
-           li.page-num
-             a(href='/blog/page/#{req.data.current_minus_2}') #{req.data.current_minus_2}
-         if  req.data.current_minus_1 != '-1'
-           li.page-num
-             a(href='/blog/page/#{req.data.current_minus_1}') #{req.data.current_minus_1}
-         if  req.data.current_page != '-1'
-           li.active.page-num
-             a(href='/blog/page/#{req.data.current_page}') #{req.data.current_page}
-         if  req.data.current_plus_1 != '-1'
-           li.page-num
-             a(href='/blog/page/#{req.data.current_plus_1}') #{req.data.current_plus_1}
-         if  req.data.current_plus_2 != '-1'
-           li.page-num
-             a(href='/blog/page/#{req.data.current_plus_2}') #{req.data.current_plus_2}
-         if  req.data.current_plus_3 != '-1'
-           li.page-num
-             a(href='/blog/page/#{req.data.current_plus_3}') »
+         if  req.data.tagId == ''
+             if  req.data.current_minus_3 != '-1'
+               li.page-num
+                 a(href='/blog/page/#{req.data.current_minus_3}') «
+             if  req.data.current_minus_2 != '-1'
+               li.page-num
+                 a(href='/blog/page/#{req.data.current_minus_2}') #{req.data.current_minus_2}
+             if  req.data.current_minus_1 != '-1'
+               li.page-num
+                 a(href='/blog/page/#{req.data.current_minus_1}') #{req.data.current_minus_1}
+             if  req.data.current_page != '-1'
+               li.active.page-num
+                 a(href='/blog/page/#{req.data.current_page}') #{req.data.current_page}
+             if  req.data.current_plus_1 != '-1'
+               li.page-num
+                 a(href='/blog/page/#{req.data.current_plus_1}') #{req.data.current_plus_1}
+             if  req.data.current_plus_2 != '-1'
+               li.page-num
+                 a(href='/blog/page/#{req.data.current_plus_2}') #{req.data.current_plus_2}
+             if  req.data.current_plus_3 != '-1'
+               li.page-num
+                 a(href='/blog/page/#{req.data.current_plus_3}') »
+         else
+             if  req.data.current_minus_3 != '-1'
+               li.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_minus_3}') «
+             if  req.data.current_minus_2 != '-1'
+               li.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_minus_2}') #{req.data.current_minus_2}
+             if  req.data.current_minus_1 != '-1'
+               li.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_minus_1}') #{req.data.current_minus_1}
+             if  req.data.current_page != '-1'
+               li.active.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_page}') #{req.data.current_page}
+             if  req.data.current_plus_1 != '-1'
+               li.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_plus_1}') #{req.data.current_plus_1}
+             if  req.data.current_plus_2 != '-1'
+               li.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_plus_2}') #{req.data.current_plus_2}
+             if  req.data.current_plus_3 != '-1'
+               li.page-num
+                 a(href='/blog/tag/#{req.data.tagId}/page/#{req.data.current_plus_3}') »
 
      .col-sm-4.sidebar
        h3.tpad Search
@@ -51,23 +74,29 @@
              button.btn.btn-default(type='button') Go
          hr
        section
-         h3.tpad Tags
-         a.list-group-item.active(href='#')
-           span.badge 25
-           | All Tags
-         a.list-group-item(href='#')
-           span.badge 15
-           | c++/c
-         a.list-group-item(href='#')
-           span.badge 5
-           | python
-         a.list-group-item(href='#')
-           span.badge 3
-           | java
-         a.list-group-item(href='#')
-           span.badge 2
-           | ruby
-         hr
+           h3.tpad Tags
+           if  req.data.tagId == ''
+               a.list-group-item.blog-tag.active(href='/blog')
+                 span.badge #{data.totalTags}
+                 | All Tags 
+               - each tag in data.tags
+                 a.list-group-item.blog-tag(href='/blog/tag/#{tag.name}')
+                   span.badge #{tag.numberOf}
+                   | #{tag.name}
+           else
+               a.list-group-item.blog-tag(href='/blog')
+                 span.badge #{data.totalTags}
+                 | All Tags 
+               - each tag in data.tags
+                 if tag.name == req.data.tagId
+                     a.list-group-item.blog-tag.active(href='/blog/tag/#{tag.name}')
+                       span.badge #{tag.numberOf}
+                       | #{tag.name}
+                 else
+                     a.list-group-item.blog-tag(href='/blog/tag/#{tag.name}')
+                       span.badge #{tag.numberOf}
+                       | #{tag.name}
+           hr
        section
          h3.tpad Latest from Twitter
          .media.tpad

@@ -11,7 +11,9 @@ $("#createArticleForm").submit(function() {
               alert(res.error_info);
               console.log('success created articlei  111')
               $('span.text-muted.tpad.welcome-title').text('» My new article');
-              $.get("/article/"+res.article_id, function(data, status){
+              //$.get("/article/"+res.article_id, function(data, status){
+              debugger;
+              $.get("/article/"+res.article_err.article_id, function(data, status){
                   //alert("Data: " + data + "\nStatus: " + status);
                   $(".page_content").html(data);
               });

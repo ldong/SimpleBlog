@@ -5,18 +5,18 @@ block content
        section
          article
            h1
-             a(href='#') #{articleInfo.title}
+             a(href='#') #{data.articleInfo.title}
            .row
              .col-sm-12.col-md-12
                span.glyphicon.glyphicon-pencil
                a(href='#') 
-               | #{articleInfo.comments.length}  Comments
+               | #{data.articleInfo.comments.length}  Comments
                span.glyphicon.glyphicon-time
-               | #{articleInfo.createDate}
+               | #{data.articleInfo.createDate}
            hr
            br
-           p.lead
-               #{articleInfo.content}
+           p.lead 
+              |#{data.articleInfo.content}
            hr
      .col-sm-4.sidebar
        h3.tpad Search
@@ -28,23 +28,15 @@ block content
              button.btn.btn-default(type='button') Go
          hr
        section
-         h3.tpad Tags
-         a.list-group-item.active(href='#')
-           span.badge 25
-           | All Tags
-         a.list-group-item(href='#')
-           span.badge 15
-           | c++/c
-         a.list-group-item(href='#')
-           span.badge 5
-           | python
-         a.list-group-item(href='#')
-           span.badge 3
-           | java
-         a.list-group-item(href='#')
-           span.badge 2
-           | ruby
-         hr
+           h3.tpad Tags
+           a.list-group-item.active(href='#')
+             span.badge #{data.totalTags}
+             | All Tags 
+             - each tag in data.tags
+               a.list-group-item(href='#')
+                 span.badge #{tag.numberOf}
+                 | #{tag.name}
+           hr
        section
          h3.tpad Latest from Twitter
          .media.tpad

@@ -58,8 +58,9 @@ var routes = require('./routes/index');
 var routes = require('./routes/blog');
 var users = require('./routes/users');
 
-
-
+//var myfiles = require('./lib/myfiles');
+// console.log(myfiles.getLargeDir('.', function(err, data){console.log('largest file:' + data);}));
+// console.log(myfiles.getLargeDir2('.', function(err, data){console.log('largest file:' + data);}));
 
 app.set("port", process.env.PORT || 3000);
 

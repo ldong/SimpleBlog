@@ -27,23 +27,15 @@ block content
             button.btn.btn-default(type='button') Go
         hr
       section
-        h3.tpad Tags
-        a.list-group-item.active(href='#')
-          span.badge 25
-          | All Tags
-        a.list-group-item(href='#')
-          span.badge 15
-          | c++/c
-        a.list-group-item(href='#')
-          span.badge 5
-          | python
-        a.list-group-item(href='#')
-          span.badge 3
-          | java
-        a.list-group-item(href='#')
-          span.badge 2
-          | ruby
-        hr
+          h3.tpad Tags
+          a.list-group-item.active(href='#')
+            span.badge #{data.totalTags}
+            | All Tags 
+            - each tag in data.tags
+              a.list-group-item(href='#')
+                span.badge #{tag.numberOf}
+                | #{tag.name}
+          hr
       section
         h3.tpad Latest from Twitter
         .media.tpad
@@ -55,3 +47,7 @@ block content
         hr
   
   script(src="/javascripts/article-new.js")
+ 
+  script(src="https://tinymce.cachefly.net/4.1/tinymce.min.js")
+  script(type="text/javascript").
+      tinymce.init({selector:'textarea'});
